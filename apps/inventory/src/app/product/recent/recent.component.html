@@ -1,0 +1,30 @@
+<mat-card class="robobai-card">
+    <mat-card-header>
+        <mat-card-subtitle>
+            Recently Added Products
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let recent of productList">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{recent.id}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{recent.name | titlecase}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list role="list">
+                <mat-list-item role="listitem">
+                    Quantity: {{recent.quantity}}
+                </mat-list-item>
+                <mat-list-item role="listitem">Cost Price: {{recent.costPrice | currency:'USD'}}
+                </mat-list-item>
+                <mat-list-item role="listitem">Selling Price: {{recent.sellingPrice | currency:'USD'}}
+                </mat-list-item>
+                <mat-list-item role="listitem">Created On: {{recent.createdAt | date:'short'}}
+                </mat-list-item>
+            </mat-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>

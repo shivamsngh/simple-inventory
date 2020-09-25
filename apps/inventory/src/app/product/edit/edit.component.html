@@ -1,0 +1,55 @@
+<mat-card class="robobai-card">
+    <mat-card-header>
+        <mat-card-subtitle>
+            Add New Product
+        </mat-card-subtitle>
+    </mat-card-header>
+    <form class="robobai-new-product-form" [formGroup]="newProductForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+            <mat-form-field appearance="outline" class="robobai-full-width">
+                <mat-label>Name</mat-label>
+                <mat-icon matPrefix>keyboard</mat-icon>
+                <input matInput formControlName="name">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error
+                    *ngIf="newProductForm.hasError('minlength', ['name']) || newProductForm.hasError('required', ['name'])">
+                    Please enter a valid name that should be greater than 2 characters.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="robobai-full-width">
+                <mat-label>Quantity</mat-label>
+                <mat-icon matPrefix>batch_prediction</mat-icon>
+                <input matInput formControlName="quantity">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error
+                    *ngIf="newProductForm.hasError('required', ['quantity']) || newProductForm.hasError('isnumeric', ['quantity'])">
+                    Please enter a valid quantity
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="robobai-full-width">
+                <mat-label>Cost Price</mat-label>
+                <mat-icon matPrefix>attach_money</mat-icon>
+                <input matInput formControlName="costPrice">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error
+                    *ngIf="newProductForm.hasError('required', ['costPrice']) || newProductForm.hasError('isNumeric', ['costPrice'])">
+                    Please enter a valid cost price
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="robobai-full-width">
+                <mat-label>Selling Price</mat-label>
+                <mat-icon matPrefix>attach_money</mat-icon>
+                <input matInput formControlName="sellingPrice">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+                <mat-error
+                    *ngIf="newProductForm.hasError('validPrice', ['sellingPrice']) || newProductForm.hasError('isNumeric', ['sellingPrice'])">
+                    Selling price should be numeric and greater than cost price
+                </mat-error>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions class="robobai-card-actions">
+            <button type="submit" mat-raised-button color="primary"
+                [disabled]="!newProductForm.valid">Save</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

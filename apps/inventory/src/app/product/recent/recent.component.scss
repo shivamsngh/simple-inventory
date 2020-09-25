@@ -1,0 +1,17 @@
+.robobai-card {
+    max-width: 600px;
+    margin: auto;
+    background-color: hsl(30, 97%, 85%);
+    color: indigo;
+    mat-card-header{
+        justify-content: space-between;
+    }
+    .robobai-new-product-form, mat-card-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .robobai-card-actions{
+        display: flex;
+        justify-content: center;
+    }
+  }     

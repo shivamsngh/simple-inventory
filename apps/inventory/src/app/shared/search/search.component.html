@@ -1,0 +1,20 @@
+<form class="robobi-product-form">
+    <mat-form-field [@wobble]="isFocused ? 'expand' : 'shrink'" class="animate-input" appearance="outline" floatLabel="false" color="primary">
+      <input type="text"
+             placeholder="Search Product..."
+             aria-label="Number"
+             matInput
+             (focus)="setFocus(true)" 
+             (blur)="setFocus(false)" 
+             [formControl]="searchCtrl"
+             [matAutocomplete]="auto"
+             >
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWithFn" (optionSelected)="productSelected($event)">
+        <mat-option *ngFor="let product of products$ | async" [value]="product">
+          {{product.name | titlecase}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-icon matSuffix color="primary">search</mat-icon>
+    </mat-form-field>
+  </form>
+  
