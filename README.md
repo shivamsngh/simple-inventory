@@ -8,7 +8,9 @@ App Screenshots at /robobai/apps/inventory/src/assets/screenshots
 
 ## Tech Stack
 Nest JS for Server BackEnd. 
+
 Angular 10 for FrontEnd
+
 Mongo DB 4.2.6, Community Edition
 
 ## Directory Pattern
