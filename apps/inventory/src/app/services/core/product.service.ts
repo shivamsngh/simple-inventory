@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '@robobai/api-interfaces';
+import { IProduct } from '@robobai/api-interfaces';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class ProductService {
 
-  selectedProduct$ = new Subject<Product>();
+  selectedProduct$ = new Subject<IProduct>();
   updateProductList$ = new BehaviorSubject(0);
   constructor(private http: HttpClient) { }
 
@@ -21,8 +21,8 @@ export class ProductService {
    * @returns {Observable<Product[]>}
    * @memberof ProductService
    */
-  getMatchedProducts(searchTerm): Observable<Product[]> {
-    return this.http.get<Product[]>(`/api/product/search?term=${searchTerm}`)
+  getMatchedProducts(searchTerm): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`/api/product/search?term=${searchTerm}`)
   }
 
   /**
@@ -31,8 +31,8 @@ export class ProductService {
    * @returns {Observable<Product>}
    * @memberof ProductService
    */
-  createNewProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`/api/product`, product);
+  createNewProduct(product: IProduct): Observable<IProduct> {
+    return this.http.post<IProduct>(`/api/product`, product);
   }
 
   /**
@@ -42,7 +42,7 @@ export class ProductService {
    * @returns {Observable<any>}
    * @memberof ProductService
    */
-  updateProduct(product: Product): Observable<any> {
+  updateProduct(product: IProduct): Observable<any> {
     return this.http.put<any>(`/api/product`, product);
   }
 
@@ -52,7 +52,7 @@ export class ProductService {
    * @returns {Observable<Product[]>}
    * @memberof ProductService
    */
-  getRecentProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`/api/product?filter=recent`);
+  getRecentProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`/api/product?filter=recent`);
   }
 }

@@ -50,4 +50,11 @@ BE features include
 
 Run `npm run serve-app` to build and run the project. The build artifacts will be stored in the `dist/` directory. This will open the default browser page after the Node server has started.
 
+## Scope of Improvement
+
+1. Meta-search on Front-end and backend
+2. Runtime Configurable Databases
+3. Indexing when app scales
+4. Authentication and Authorization if scope is restricted
+
 

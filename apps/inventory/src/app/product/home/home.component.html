@@ -54,5 +54,5 @@
     </form>
 </mat-card>
 <div class="container-empty" *ngIf="(product$ | async) === null">
-    <mat-icon>hourglass_bottom</mat-icon>
+    <mat-icon color="accent" [@spin]="spin ? 'default' : 'spinning'">cached</mat-icon>
 </div>

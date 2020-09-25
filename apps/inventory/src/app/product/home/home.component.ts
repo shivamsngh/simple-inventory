@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct } from '@robobai/api-interfaces';
@@ -11,10 +12,25 @@ import { ProductService } from '../../services/core/product.service';
 @Component({
   selector: 'robobai-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations:[ trigger('spin', [
+    state('default', style({
+      transform: 'rotate(0)',
+      color:'#3f51b5'
+    })),
+    state('spinning', style({
+      transform: 'rotate(360deg)'
+    })),
+    transition('spinning => default', [
+      animate('0.4s')
+    ]),
+    transition('default => spinning', [
+      animate('0.4s')
+    ])
+  ])]
 })
 export class HomeComponent implements OnInit {
-
+  spin=true;
   product$: Observable<IProduct>;
   updateProductForm: FormGroup;
   constructor(private fb: FormBuilder, private productSvc: ProductService, private notificationSvc: NotificationService) {
@@ -37,6 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setInterval(()=> this.spin = !this.spin, 2000)
   }
 
   onSubmit(): void {
